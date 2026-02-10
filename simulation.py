@@ -23,3 +23,6 @@ class Simulation:
                     if new_pos != (row, column):
                         self.grid.set_cell(new_pos[0], new_pos[1], particle)
                         self.grid.remove_particle(row,column)
+    
+    def clear_grid(self):
+        self.grid.clear_grid()

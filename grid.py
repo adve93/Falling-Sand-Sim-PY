@@ -1,7 +1,5 @@
 import pygame
 
-EMPTY_CELL_COLOR = (55,55,55)
-
 class Grid:
     def __init__(self, width, height, cell_size):
         self.rows = height // cell_size
@@ -12,12 +10,11 @@ class Grid:
     def draw(self, window):
         for row in range(self.rows):
             for column in range(self.columns):
-                color = EMPTY_CELL_COLOR
                 particle = self.cells[row][column]
                 if particle is not None: 
                     color = particle.color
-                pygame.draw.rect(window, color,
-                    (column * self.cell_size, row * self.cell_size, self.cell_size - 1, self.cell_size - 1))
+                    pygame.draw.rect(window, color,
+                    (column * self.cell_size, row * self.cell_size, self.cell_size, self.cell_size))
                 
     def add_particles(self, row, column, particle_type):
         if 0 <= row < self.rows and 0 <= column < self.columns:
@@ -39,3 +36,6 @@ class Grid:
         if 0 <= row < self.rows and 0 <= column < self.columns:
             return self.cells[row][column]
         return None
+    
+    def clear_grid(self):
+        self.cells = [[None for _ in range(self.columns)] for _ in range(self.rows)]
