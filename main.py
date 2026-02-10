@@ -1,7 +1,6 @@
 import pygame
 import sys
-from grid import Grid
-from particles import SandParticles
+from simulation import Simulation
 
 #Simulation Defenition
 pygame.init()
@@ -16,10 +15,8 @@ window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Falling Sand")
 
 clock = pygame.time.Clock()
-grid = Grid(WINDOW_WIDTH, WINDOW_HEIGHT, CELL_SIZE)
-grid.cells[0][0] = SandParticles()
-grid.cells[2][1] = SandParticles()
-grid.cells[1][2] = SandParticles()
+simulation = Simulation(WINDOW_WIDTH, WINDOW_HEIGHT, CELL_SIZE)
+
 
 #Simulation Loop
 while True:
@@ -30,11 +27,17 @@ while True:
             pygame.quit()
             sys.exit()
 
+    buttons = pygame.mouse.get_pressed()
+    if buttons[0]:
+        pos = pygame.mouse.get_pos()
+        row = pos[1] // CELL_SIZE
+        column = pos[0] // CELL_SIZE
+        simulation.add_particles(row, column)
     # 2. Update State
 
     # 3. Drawing
     window.fill(WINDOW_COLOR)
-    grid.draw(window)
+    simulation.draw(window)
 
     pygame.display.flip()
     clock.tick(MAX_FRAMERATE)
