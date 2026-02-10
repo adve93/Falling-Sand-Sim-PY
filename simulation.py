@@ -64,4 +64,7 @@ class Simulation:
             pos = pygame.mouse.get_pos()
             row = pos[1] // self.cell_size
             column = pos[0] // self.cell_size
-            self.add_particles(row, column)
+            if self.mode == "eraser":
+                self.remove_particle(row, column)
+            else:
+                self.add_particles(row, column)

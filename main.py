@@ -19,7 +19,7 @@ simulation = Simulation(WINDOW_WIDTH, WINDOW_HEIGHT, CELL_SIZE)
 
 #Simulation Loop
 while True:
-
+ 
     # 1. Event Handling
     simulation.handle_controls()
 
