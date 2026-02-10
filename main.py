@@ -34,7 +34,8 @@ while True:
         column = pos[0] // CELL_SIZE
         simulation.add_particles(row, column)
     # 2. Update State
-
+    simulation.update()
+    
     # 3. Drawing
     window.fill(WINDOW_COLOR)
     simulation.draw(window)
