@@ -9,6 +9,7 @@ Current features:
 - A special cursos to display which Mode you are on.
 
 Future Implementations:
+- Containarize the App
 - Water Particle
 - Fire Particle
 - Steam Particle
